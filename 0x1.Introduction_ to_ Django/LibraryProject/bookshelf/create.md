@@ -1,5 +1,5 @@
 ##Create records
-- record = Book.objects.create(title='1984',author='Goerge Orwell', publication_year =1984)
+- record = Book.objects.create(title='1984',author='George Orwell', publication_year =1984)
 - 
 - record.save()
 
