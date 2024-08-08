@@ -1,4 +1,5 @@
 ##Delete records
+- from bookshelf.models import Book
 - Book.objects.get(id=1).delete()
 
 - Output
