@@ -1,6 +1,9 @@
 ##Update records
 - Book.objects.filter(id=1).upadte(title='Nineteen Eighty-Four')
 
+- Another method
+- book.title('Nineteen Eighty-Four')
+
 - Output
 - 1
 
