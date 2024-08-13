@@ -18,4 +18,4 @@ libary.objects.all()
 
 # Retrieve the librarian for a library.
 librarian = Librarian("Justo", libary)
-Librarian.objects.get(libary=library_name)
+Librarian.objects.get(library=library_name)
