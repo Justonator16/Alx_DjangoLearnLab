@@ -1,4 +1,4 @@
-from django.db import models
+from .models import Author, Library, Librarian, Book
 
 # Query all books by a specific author.
 author = Author("Joe")
