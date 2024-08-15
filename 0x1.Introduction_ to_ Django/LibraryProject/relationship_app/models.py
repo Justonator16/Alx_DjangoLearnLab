@@ -9,7 +9,7 @@ class Author(models.Model):
         return self.name
 
 class Book(models.Model):
-    title = models.CharField(max_length=20,  )
+    title = models.CharField(max_length=20)
     author = models.ForeignKey(Author, on_delete=models.CASCADE,  )
 
     def __str__(self):
@@ -29,10 +29,10 @@ class Librarian(models.Model):
     def __str__(self):
         return f"Librarian name {self.name} , Library {self.library}"
 
-# record = Author(1,"Junior")
+# record = Author(name="Junior")
 # record.save()
 
-# b = Book(id=None, title="1987" , author=record)
+# b = Book(title="1987", author=record)
 # b.save()
 
 # print(b.author.id)
