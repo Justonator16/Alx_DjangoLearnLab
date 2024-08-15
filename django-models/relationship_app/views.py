@@ -1,6 +1,5 @@
 from django.shortcuts import render
 from django.views.generic import TemplateView
-from bookshelf.models import Book
 
 # Create your views here.
 #Function based view
@@ -12,7 +11,7 @@ def books(request):
         books[book.title] = [book.author, book.publication_year]
         
     context = books
-    return render(request, 'list_books.html' , context)
+    return render(request, 'relationship/list_books.html' , context)
 
 class BookView(TemplateView):
     template_name = 'library_detail.html'
