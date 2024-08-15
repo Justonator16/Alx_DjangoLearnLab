@@ -15,4 +15,4 @@ def books(request):
     return render(request, 'relationship_app/list_books.html' , context)
 
 class BookView(TemplateView):
-    template_name = 'library_detail.html'
+    template_name = 'relationship_app/library_detail.html'
