@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.views.generic import TemplateView, ListView, DetailView
-from bookshelf.models import Book
+from .models import Library, Book
 
 # Create your views here.
 #Function based view
