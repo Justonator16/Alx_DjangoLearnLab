@@ -6,7 +6,7 @@ from .models import Library, Book
 
 # Create your views here.
 #Function based view
-def books(request):
+def list_books(request):
     book_objs = Book.objects.all()
 
     books = {}
@@ -17,4 +17,10 @@ def books(request):
     return render(request, 'relationship_app/list_books.html' , context)
 
 class BookView(TemplateView):
+    template_name = 'relationship_app/library_detail.html'
+
+class LibraryDetailView(DetailView):
+    template_name = 'relationship_app/library_detail.html'
+
+class LibraryListView(ListView):
     template_name = 'relationship_app/library_detail.html'
