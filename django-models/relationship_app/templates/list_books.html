@@ -11,10 +11,15 @@
     {% block body %}
     <h1>Books Available:</h1>
     <ul>
-      {% for book in books %}
-        <li>{{ book.title }} by {{ book.author.name }}</li>
-        {% endfor %}
+      {% if not books %}
+      <li>No books found add books</li>
+      {% else %}
+        {% for book in books %}
+          <li><p>{{ book.author }}</p></li>
+          {% endfor %}
+      {% endif %}
     </ul>
+    <p>{{ book_list }}</p>
     {% endblock %}
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
   </body>
