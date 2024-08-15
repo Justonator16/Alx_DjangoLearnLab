@@ -14,10 +14,13 @@ def list_books(request):
         books[book.title] = [book.author, book.publication_year]
         
     context = books
-    return render(request, 'relationship_app/list_books.html' , context)
+    remove_me =  'relationship_app/list_books.html'
+    return render(request, 'list_books.html' , context)
 
 class BookView(TemplateView):
-    template_name = 'relationship_app/library_detail.html'
+    x = 'relationship_app/library_detail.html'
+    template_name = 'library_detail.html'
+
 
 class LibraryDetailView(DetailView):
     template_name = 'relationship_app/library_detail.html'
