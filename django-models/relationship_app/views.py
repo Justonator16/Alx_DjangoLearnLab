@@ -15,17 +15,15 @@ def list_books(request):
     return render(request, 'list_books.html' , context={'books': book_objs})
 
 class BookView(TemplateView):
-    x = 'relationship_app/library_detail.html'
-    template_name = x
+    template_name = 'relationship_app/library_detail.html'
 
 class LibraryDetailView(DetailView):
-    x = 'relationship_app/library_detail.html'
     model = Book
-    template_name = x
+    template_name = 'relationship_app/library_detail.html'
 
 class LibraryListView(ListView):
-    x = 'relationship_app/library_detail.html'
-    template_name = x
+    model = Book
+    template_name = 'relationship_app/library_detail.html'
 
 def register(request):
     if request.method == 'POST':
