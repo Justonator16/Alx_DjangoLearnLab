@@ -25,3 +25,12 @@ class LibraryDetailView(DetailView):
 class LibraryListView(ListView):
     x = 'relationship_app/library_detail.html'
     template_name = x
+
+def register(request):
+    return render(request, "register.html")
+
+class LogoutView(UserCreationForm):
+    pass
+
+class LoginView(UserCreationForm):
+    pass
