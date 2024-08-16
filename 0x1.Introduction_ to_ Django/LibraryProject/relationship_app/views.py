@@ -14,12 +14,12 @@ def list_books(request):
 
 class BookView(TemplateView):
     x = 'relationship_app/library_detail.html'
-    template_name = 'library_detail.html'
+    template_name = x
 
 class LibraryDetailView(DetailView):
     x = 'relationship_app/library_detail.html'
-    template_name = 'library_detail.html'
+    template_name = x
 
 class LibraryListView(ListView):
     x = 'relationship_app/library_detail.html'
-    template_name = 'library_detail.html'
+    template_name = x
