@@ -1,0 +1,8 @@
+{% extends 'register.html' %}
+{% block title %}
+<title>Logout</title>
+{% endblock %}
+{% block content %}
+<h1>You have been logged out</h1>
+<a href="{% url 'login' %}">Log In again</a>
+{% endblock %}
