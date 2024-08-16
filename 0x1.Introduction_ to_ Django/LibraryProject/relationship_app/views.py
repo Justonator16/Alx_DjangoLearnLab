@@ -1,7 +1,6 @@
 from django.shortcuts import render
-from django.contrib.auth import login, logout
 from django.contrib.auth.forms import UserCreationForm
-from django.views.generic import TemplateView
+from django.views.generic import TemplateView, CreateView
 from django.views.generic.detail import DetailView
 from django.views.generic.list import ListView
 from .models import Library, Book
@@ -27,10 +26,5 @@ class LibraryListView(ListView):
     template_name = x
 
 def register(request):
+    
     return render(request, "register.html")
-
-class LogoutView(UserCreationForm):
-    pass
-
-class LoginView(UserCreationForm):
-    pass
