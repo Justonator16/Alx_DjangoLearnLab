@@ -10,10 +10,8 @@ from django.contrib.auth.decorators import user_passes_test
 # Create your views here.
 #Function based view
 def list_books(request):
-    book_objs = Book.objects.all()
-        
-    remove_me =  'relationship_app/list_books.html'
-    return render(request, 'list_books.html' , context={'books': book_objs})
+    book_objs = Book.objects.all()        
+    return render(request, 'relationship_app/list_books.html' , context={'books': book_objs})
 
 class BookView(TemplateView):
     template_name = 'relationship_app/library_detail.html'
@@ -34,7 +32,7 @@ def register(request):
             return redirect('login')
     else:
         form = UserCreationForm()
-    return render(request, "register.html", {'form': form})
+    return render(request, "relationship_app/register.html", {'form': form})
 
 
 def admin_check(user):
@@ -42,18 +40,18 @@ def admin_check(user):
 
 @user_passes_test(admin_check)
 def admin_view(request):
-    return render(request, 'admin_view.html')
+    return render(request, 'relationship_app/admin_view.html')
 
 def member_check(user):
     return user.userprofile.role == 'Member'
 
 @user_passes_test(member_check)
 def member_view(request):
-    return render(request, 'member_view.html')
+    return render(request, 'relationship_app/member_view.html')
 
 def librarian_check(user):
     return user.userprofile.role == 'Librarian'
 
 @user_passes_test(librarian_check)
 def librarian_view(request):
-    return render(request, 'librarian_view.html')
+    return render(request, 'relationship_app/librarian_view.html')
