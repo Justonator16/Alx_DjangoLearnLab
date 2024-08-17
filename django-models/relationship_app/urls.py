@@ -15,6 +15,10 @@ urlpatterns = [
     path('librarian/', librarian_view, name='Librarian'),
     path('member/', member_view, name='Member'),
 
+    path('add/', views.add_book, name="add_book"),
+    path('edit/', views.edit_book, name='edit_book'),
+    path('delete/', views.delete_book, name='delete_book'),
+
     path("", list_books, name="books"),
     path("library/", BookView.as_view(), name="library"),
     path("library_detail/", LibraryDetailView.as_view(), name="library_detail"),
