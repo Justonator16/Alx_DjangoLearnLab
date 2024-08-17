@@ -5,6 +5,7 @@ from django.views.generic import TemplateView
 from django.views.generic.detail import DetailView
 from django.views.generic.list import ListView
 from .models import Library, Book
+from django.contrib.auth.decorators import user_passes_test
 
 # Create your views here.
 #Function based view
@@ -34,3 +35,25 @@ def register(request):
     else:
         form = UserCreationForm()
     return render(request, "register.html", {'form': form})
+
+
+def admin_check(user):
+    return user.userprofile.role == 'Admin'
+
+@user_passes_test(admin_check)
+def admin_view(request):
+    return render(request, 'admin_view.html')
+
+def member_check(user):
+    return user.userprofile.role == 'Member'
+
+@user_passes_test(member_check)
+def member_view(request):
+    return render(request, 'member_view.html')
+
+def librarian_check(user):
+    return user.userprofile.role == 'Librarian'
+
+@user_passes_test(librarian_check)
+def librarian_view(request):
+    return render(request, 'librarian_view.html')
