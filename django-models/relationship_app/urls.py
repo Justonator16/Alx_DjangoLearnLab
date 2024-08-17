@@ -11,9 +11,9 @@ urlpatterns = [
     path("login/", LoginView.as_view(template_name="login.html")),
     path("logout/", LogoutView.as_view(template_name="logout.html"), name="logout"),
 
-    path('admin_view/', admin_view, name='admin_view'),
-    path('librarian/', librarian_view, name='librarian_view'),
-    path('member/', member_view, name='member_view'),
+    path('admin_view/', admin_view, name='Admin'),
+    path('librarian/', librarian_view, name='Librarian'),
+    path('member/', member_view, name='Member'),
 
     path("", list_books, name="books"),
     path("library/", BookView.as_view(), name="library"),
