@@ -13,13 +13,13 @@ class Author(models.Model):
     def __str__(self):
         return self.name
     
-    class Meta:
-        permissions = [
-            ("can_view", "Can view instance"),
-            ("can_create", "Can create instance"),
-            ("can_edit", "Can edit instance"),
-            ("can_delete", "Can delete instance"),
-        ]
+    # class Meta:
+    #     permissions = [
+    #         ("can_view", "Can view instance"),
+    #         ("can_create", "Can create instance"),
+    #         ("can_edit", "Can edit instance"),
+    #         ("can_delete", "Can delete instance"),
+    #     ]
 
 class Book(models.Model):
     title = models.CharField(max_length=20)
@@ -90,11 +90,11 @@ class CustomUserManager(BaseUserManager):
 
         return self.create_user(username, email, password)
 
-class CustomUser(AbstractUser):
-    date_of_birth = models.DateField(null=True, blank=True)
-    profile_photo = models.ImageField()
+# class CustomUser(AbstractUser):
+#     date_of_birth = models.DateField(null=True, blank=True)
+#     profile_photo = models.ImageField()
 
-    objects = CustomUserManager()
-    def __str__(self) -> str:
-        return self.username
+#     objects = CustomUserManager()
+#     def __str__(self) -> str:
+#         return self.username
 
