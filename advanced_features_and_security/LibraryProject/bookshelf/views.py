@@ -7,6 +7,7 @@ def list_books(request):
     book_list = Book.objects.all() 
     if not book_list:
         raise_exception = "Error occured"
-        return HttpReponse(raise_exception)
+        response = HttpReponse(raise_exception)
+        response["Content-Security-Policy"] = "default-src 'self';"
 
     return render(request, 'relationship_app/list_books.html' , context={'books': book_list})
