@@ -4,7 +4,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.views.generic import TemplateView
 from django.views.generic.detail import DetailView
 from django.views.generic.list import ListView
-from .models import Library, Book, can
+from .models import Library, Book
 from django.contrib.auth.decorators import permission_required
 from .forms import BookForm
 

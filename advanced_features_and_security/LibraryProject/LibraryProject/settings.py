@@ -73,7 +73,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'LibraryProject.wsgi.application'
 
-AUTH_USER_MODEL = 'bookshelf.CustomUser'
+AUTH_USER_MODEL = 'relationship_app.CustomUser'
 
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
