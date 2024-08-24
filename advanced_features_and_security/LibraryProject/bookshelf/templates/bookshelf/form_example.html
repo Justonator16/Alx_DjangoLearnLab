@@ -7,7 +7,7 @@
 </head>
 <body>
     <form method="post">
-        {% csfr_token %} {{ form }}
+        {% csrf_token %} {{ form }}
         <input type="submit" value="Save">
     </form>
 </body>

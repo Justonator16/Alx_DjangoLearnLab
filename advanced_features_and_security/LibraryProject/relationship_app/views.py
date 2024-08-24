@@ -11,8 +11,8 @@ from .forms import BookForm
 # Create your views here.
 #Function based view
 def list_books(request):
-    book_objs = Book.objects.all()        
-    return render(request, 'relationship_app/list_books.html' , context={'books': book_objs})
+    books = Book.objects.all()        
+    return render(request, 'relationship_app/list_books.html' , {'books': books})
 
 class BookView(TemplateView):
     template_name = 'relationship_app/library_detail.html'
