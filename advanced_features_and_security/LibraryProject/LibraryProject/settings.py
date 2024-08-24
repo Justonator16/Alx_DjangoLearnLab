@@ -50,6 +50,9 @@ CSRF_COOKIE_SECURE = True
 # Ensure CSRF cookies are only sent over HTTPS
 SESSION_COOKIE_SECURE = True
 
+SECURE_PROXY_SSL_HEADER = True
+HTTP_X_FORWARDED_PROTO = True
+
 ALLOWED_HOSTS = []
 
 # Application definition
