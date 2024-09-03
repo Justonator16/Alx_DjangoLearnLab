@@ -1,0 +1,10 @@
+{% extends 'api/book_list.html' %}
+{% block title %}Book Detail {% endblock %}
+
+{% block content %}
+<p>Title : {{ book.title }}</p>
+<p>Publication Year: {{ book.publication_year }}</p>
+<p>Author : {{ book.author.name }}</p>
+
+Return to book list<a href="{% url 'book_list' %}">Here</a>
+{% endblock %}

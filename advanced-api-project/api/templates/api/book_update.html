@@ -1,0 +1,10 @@
+{% extends 'api/book_list.html' %}
+{% block title %}Book Update {% endblock %}
+
+{% block content %}
+<form action="" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Save</button>
+</form>
+{% endblock %}

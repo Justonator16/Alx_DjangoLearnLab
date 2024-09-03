@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %} Book List {% endblock %}</title>
+</head>
+<body>
+    {% block content %}
+    {% if books %}
+        {% for book in  books %}
+            <ul>
+                <p>Book {{ book.id }} Detail<a href="{% url 'book_detail' book.id %}"> Here</a></p>
+                <p>Book {{ book.id }} Update <a href="{% url 'book_update' book.id %}"> Here</a></p>
+                <p>Book {{ book.id }} Delete <a href="{% url 'book_delete' book.id %}"> Here</a></p>
+                <li>{{ book.title }},{{ book.author }} {{ book.publication_year }}</li>
+            </ul>
+        {% endfor %}
+    {% else %}
+        <p>No books here</p>
+    {% endif %}
+    {% endblock %}
+
+    <p>Create a book <a href="{% url 'book_create' %}">Here</a></p>
+
+    
+</body>
+</html>

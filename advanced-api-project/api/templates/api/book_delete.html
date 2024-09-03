@@ -1,0 +1,12 @@
+{% extends 'api/book_list.html' %}
+{% block title %}Book Delete {% endblock %}
+
+{% block content %}
+<p>Delete your book {{ book.id }}</p>
+<form action="" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+<button type="submit">Delete</button>
+</form>
+
+{% endblock %}
