@@ -4,9 +4,7 @@ from .models import Book
 from .forms import BookForm
 from rest_framework.permissions import IsAuthenticatedOrReadOnly, IsAuthenticated
 from rest_framework import generics
-from rest_framework.filters import SearchFilter, OrderingFilter
 from .seriealizers import BookSerializer
-from django_filters.rest_framework import DjangoFilterBackend
 from django_filters import rest_framework
 
 #Provides a list of all book created from models
@@ -49,7 +47,9 @@ API SECTION
 class BookListAPIView(generics.ListAPIView):
     queryset = Book.objects.all()
     serializer_class = BookSerializer
-    filter_backends = [DjangoFilterBackend, SearchFilter, OrderingFilter]
+    filter_backends = [ 
+        rest_framework.DjangoFilterBackend, 
+        rest_framework.filters.SearchFilter, rest_framework.filters.OrderingFilter]
     filterset_fields = ['title', 'author']
     search_fields = ['title', 'author']
     ordering_fields = ['title', 'publication_year']
