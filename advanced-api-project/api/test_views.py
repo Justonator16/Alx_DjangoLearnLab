@@ -12,6 +12,10 @@ class BookAPITests(APITestCase):
         self.book1 = Book.objects.create(title="Book One", author="Author One", publication_year=2004)
         self.book2 = Book.objects.create(title="Book Two", author="Author Two", publication_year=2013)
 
+    def login(self):
+        user_login = self.client.login(username="Junior", password="12345")
+        self.assertEqual(user_login, True)
+
     def test_create_book(self):
         data = {'title': "Book Three", "author": "Author Three", "publication_year": 2020}
         response = self.client.post(reverse('book_list'), data)
