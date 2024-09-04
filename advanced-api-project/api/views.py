@@ -1,11 +1,13 @@
 from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
+import rest_framework.filters
 from .models import Book
 from .forms import BookForm
 from rest_framework.permissions import IsAuthenticatedOrReadOnly, IsAuthenticated
 from rest_framework import generics
 from .seriealizers import BookSerializer
-from django_filters import rest_framework
+from django_filters import rest_framework as rf
+import rest_framework
 
 #Provides a list of all book created from models
 class BookListView(IsAuthenticatedOrReadOnly, ListView):
@@ -48,7 +50,7 @@ class BookListAPIView(generics.ListAPIView):
     queryset = Book.objects.all()
     serializer_class = BookSerializer
     filter_backends = [ 
-        rest_framework.DjangoFilterBackend, 
+        rf.DjangoFilterBackend, 
         rest_framework.filters.SearchFilter, rest_framework.filters.OrderingFilter]
     filterset_fields = ['title', 'author']
     search_fields = ['title', 'author']
