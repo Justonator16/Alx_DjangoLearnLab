@@ -1,11 +1,11 @@
 from django.test import TestCase
 from django.urls import reverse
 from rest_framework import status
-from rest_framework.test import APIClient
+from rest_framework.test import APIClient, APITestCase
 from .models import Book
 
 # Create your tests here.
-class BookAPITests(TestCase):
+class BookAPITests(APITestCase):
 
     def setup(self):
         self.client = APIClient()
