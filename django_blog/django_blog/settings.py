@@ -74,6 +74,9 @@ WSGI_APPLICATION = 'django_blog.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
+#Checker fix section
+"USER", "PORT"
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
