@@ -1,0 +1,8 @@
+{% extends 'registration/register.html' %}
+{% block title %}Logout {% endblock %}
+
+{% block content %}
+<h1>Are you sure you want to log out?</h1>
+<button type="submit">Yes</button>
+<a href="{% url 'blog' %}">No</a>
+{% endblock %}

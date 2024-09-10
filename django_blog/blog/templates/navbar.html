@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nav Bar</title>
+</head>
+<body>
+    {% block content %}
+    <ul class="nav justify-content-center">
+        <li class="nav-item">
+            <a class="na-link active" aria-current="page" href="{% url 'logout' %}">Logout</a>
+        </li>
+        <li class="nav-item">
+            <a href="#" class="nav-link">Link</a>
+        </li>
+    </ul>
+    {% endblock %}
+</body>
+</html>
