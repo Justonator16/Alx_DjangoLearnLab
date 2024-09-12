@@ -19,7 +19,7 @@ urlpatterns = [
     # CRUD Operation Comment Model
     path('login/post/<int:pk>/comment/', crud.CommentListView.as_view(), name='comment_list'),
     path('login/post/<int:pk>/comment/new/', crud.CommentCreateView.as_view(), name="comment_create"),
-    path('login/post/<int:pk>/comment/<int:pk>/detail', crud.CommentDetailView.as_view(), name="comment_detail"),
-    path('login/post/<int:pk>/comment/<int:pk>/update', crud.CommentUpdateView.as_view(), name="comment_update"),
-    path('login/post/<int:pk>/comment/<int:pk>/delete', crud.CommentDeleteView.as_view(), name="comment_delete"),
+    path('login/post/<int:pk>/comment/<int:pk>/detail/', crud.CommentDetailView.as_view(), name="comment_detail"),
+    path('login/post/<int:pk>/comment/<int:pk>/update/', crud.CommentUpdateView.as_view(), name="comment_update"),
+    path('login/post/<int:pk>/comment/<int:pk>/delete/', crud.CommentDeleteView.as_view(), name="comment_delete"),
 ]
