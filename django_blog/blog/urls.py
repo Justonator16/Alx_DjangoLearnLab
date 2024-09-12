@@ -11,8 +11,8 @@ urlpatterns = [
 
     # CRUD Operations for Post Model
     path('post/', crud.PostListView.as_view(), name="post_list"),
-    path('post/new', crud.PostCreateView.as_view(), name="post_create"),
+    path('post/new/', crud.PostCreateView.as_view(), name="post_create"),
     path('post/<int:pk>/', crud.PostDetailView.as_view(), name="post_detail"),
-    path('post/<int:pk>/update', crud.PostUpdateView.as_view(), name="post_update"),
-    path('post/<int:pk>/delete', crud.PostDeleteview.as_view(), name="post_delete"),
+    path('post/<int:pk>/update/', crud.PostUpdateView.as_view(), name="post_update"),
+    path('post/<int:pk>/delete/', crud.PostDeleteview.as_view(), name="post_delete"),
 ]
