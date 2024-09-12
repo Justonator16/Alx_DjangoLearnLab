@@ -1,0 +1,10 @@
+{% extends 'blog/base.html' %}
+{% block title %} Comment Create {% endblock %}
+
+{% block content %}
+<form action="{% url 'comment_create' %}" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Save</button>
+</form>
+{% endblock %}

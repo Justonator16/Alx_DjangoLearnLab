@@ -6,8 +6,8 @@ from django.contrib.auth.views import LoginView, LogoutView
 from django.contrib.auth.decorators import login_required
 from django.views.generic import CreateView, TemplateView, DetailView, UpdateView, DeleteView , ListView
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
-from .forms import ProfileForm, PostForm
-from .models import Post
+from .forms import ProfileForm, PostForm, CommentForm
+from .models import Post, Comment
 
 class BlogView(TemplateView):
     template_name = 'blog/blog.html'
@@ -36,7 +36,7 @@ def profile(request):
         form = ProfileForm(instance=request.user)
         return render(request, 'blog/profile.html', {'form': form})
 
-# CRUD OPERATIONS 
+# CRUD OPERATIONS Posts
 # Create Posts
 class PostCreateView( LoginRequiredMixin ,CreateView):
     form_class = PostForm
@@ -75,6 +75,50 @@ class PostDeleteview(UserPassesTestMixin, DeleteView):
 
     def test_func(self) -> bool | None:
         return self.request.user.is_active
+
+# CRUD OPERATIONS FOR Comment Model
+# Create
+class CommentCreateView(LoginRequiredMixin, CreateView):
+    model = Comment
+    template_name = 'blog/comment_create.html'
+    form_class = CommentForm
+    context_object_name = 'forms'
+    success_url = reverse_lazy('comment_list')
+
+# Read
+class CommentListView(ListView):
+    model = Comment
+    template_name = 'blog/comment_list.html'
+    context_object_name = 'comments'
+
+# Update
+class CommentUpdateView(UserPassesTestMixin, UpdateView):
+    model = Comment
+    form_class = CommentForm
+    template_name = 'blog/comment_update.html'
+    context_object_name = 'comment'
+    success_url = reverse_lazy('comment_list')
+
+    def test_func(self) -> bool | None:
+        return self.request.user.is_authenticated
+
+class CommentDetailView(DetailView):
+    model = Comment
+    template_name = 'blog/comment_detail.html'
+    context_object_name = 'comment'
+
+# Delete
+class CommentDeleteView(UserPassesTestMixin, DeleteView):
+    model = Comment
+    template_name = 'blog/comment_delete.html'
+    context_object_name = 'comment'
+    success_url = reverse_lazy('comment_list')
+
+    def test_func(self) -> bool | None:
+        return self.request.user.is_authenticated
+
+
+    
 
 
 

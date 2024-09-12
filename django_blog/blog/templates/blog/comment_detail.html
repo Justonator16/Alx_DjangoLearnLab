@@ -1,0 +1,13 @@
+{% extends 'blog/base.html' %}
+{% block title %} Comment Detail {% endblock %}
+
+{% block content %}
+<p></p>
+<ul>
+    <li>{{ comment.post }}</li>
+    <li>{{ comment.author }}</li>
+    <li>{{ comment.context }}</li>
+    <li>{{ comment.created_at }}</li>
+    <li>{{ comment.updated_at }}</li>
+</ul>
+{% endblock %}

@@ -1,0 +1,10 @@
+{% extends 'blog/base.html' %}
+{% block title %} Comment Delete {% endblock %}
+
+{% block content %}
+<form action="{% url 'comment_delete' %}" method="post">
+    <p>Are you sure you want to delete <b>{{ comment.post }}</b>? </p>
+    <button type="submit">Yes, Delete</button>
+    <a href="{% url 'comment_list' %}">No</a>
+</form>
+{% endblock %}
