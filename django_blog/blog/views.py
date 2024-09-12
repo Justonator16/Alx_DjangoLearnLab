@@ -41,26 +41,26 @@ def profile(request):
 class PostCreateView( LoginRequiredMixin ,CreateView):
     form_class = PostForm
     model = Post
-    template_name = 'blog/create.html'
+    template_name = 'blog/post_create.html'
     success_url = reverse_lazy('post_list')
 
 
 # Read Posts
 class PostListView(ListView):
     model = Post
-    template_name = 'blog/list.html'
+    template_name = 'blog/post_list.html'
     context_object_name = 'posts'
 
 class PostDetailView(DetailView):
     model = Post
-    template_name = 'blog/detail.html'
+    template_name = 'blog/post_detail.html'
     context_object_name = 'post'
 
 # Update a Post
 class PostUpdateView(UserPassesTestMixin, UpdateView):
     model = Post
     form_class = PostForm
-    template_name = 'blog/update.html'
+    template_name = 'blog/post_update.html'
     success_url = reverse_lazy('post_list')
 
     def test_func(self) -> bool | None:
@@ -70,7 +70,7 @@ class PostUpdateView(UserPassesTestMixin, UpdateView):
 class PostDeleteview(UserPassesTestMixin, DeleteView):
     model = Post
     success_url = reverse_lazy('post_list')
-    template_name = 'blog/delete.html'
+    template_name = 'blog/post_delete.html'
     context_object_name = 'post'
 
     def test_func(self) -> bool | None:
