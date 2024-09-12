@@ -10,9 +10,9 @@ urlpatterns = [
     path('profile/', profile, name='profile'),
 
     # CRUD Operations for Post Model
-    path('login/post/', crud.PostListView.as_view(), name="post_list"),
-    path('login/post/new', crud.PostCreateView.as_view(), name="post_create"),
-    path('login/post/<int:pk>/', crud.PostDetailView.as_view(), name="post_detail"),
-    path('login/post/<int:pk>', crud.PostUpdateView.as_view(), name="post_update"),
-    path('login/post/<int:pk>/delete', crud.PostDeleteview.as_view(), name="post_delete"),
+    path('post/', crud.PostListView.as_view(), name="post_list"),
+    path('post/new', crud.PostCreateView.as_view(), name="post_create"),
+    path('post/<int:pk>/', crud.PostDetailView.as_view(), name="post_detail"),
+    path('post/<int:pk>/update', crud.PostUpdateView.as_view(), name="post_update"),
+    path('post/<int:pk>/delete', crud.PostDeleteview.as_view(), name="post_delete"),
 ]
