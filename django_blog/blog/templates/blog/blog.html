@@ -1,14 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blog</title>
-</head>
-<body>
-    {% include 'navbar.html' %}
-    <p>Blog section welcome</p>
-    <h1>{{ user.id }}</h1>
-    <p>View your profile <a href="{% url 'profile' %}">here</a></p>
-</body>
-</html>
+{% extends 'blog/base.html' %}
+{% block title %} Blog {% endblock %}
+
+{% block content %}
+<p>Blog section welcome</p>
+<p>Contiue to your <a href="{% url 'login' %}">posts</a></p>
+{% endblock %}

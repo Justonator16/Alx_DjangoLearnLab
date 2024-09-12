@@ -4,19 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %} Django Blog {% endblock %}</title>
+    {% load static %}
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
 </head>
 <body>
-    <header>
-        <nav>
-            <ul>
-                <li><a href="{% url 'home' %}">Home</a></li>
-                <li><a href="{% url 'posts' %}">Blog</a></li>
-                <li><a href="{% url 'login' %}">Home</a></li>
-                <li><a href="{% url 'register' %}">register</a></li>
-            </ul>
-        </nav>
-    </header>
+    <ul class="nav justify-content-center"></ul>
+        
+        <li class="nav-item">
+            <a href="{% url 'blog' %}">Blog</a>
+        </li>
+        <li class="nav-item"></li>
+            <a href="{% url 'login' %}">Home</a>
+        </li>
+        <li class="nav-item"></li>
+            <a href="{% url 'register' %}">register</a>
+        </li>
+        <li class="nav-item"></li>
+            <a class="na-link active" aria-current="page" href="{% url 'logout' %}">Logout</a>
+        </li>
+    </ul>
     <div class="content">
         {% block content %}
         <!-- Specific page content goes here -->

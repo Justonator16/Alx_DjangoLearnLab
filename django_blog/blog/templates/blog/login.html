@@ -1,10 +1,10 @@
-{% extends 'registration/register.html' %}
+{% extends 'blog/base.html' %}
 
 {% block title %} Login Form {% endblock %}
 
-{% block body %}
+{% block content %}
 
-<form action="{% url 'login' %}" method="post">
+<form method="post">
 
     {% csrf_token %}
     {{ form.as_p }}

@@ -72,7 +72,7 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'django_blog.wsgi.application'
-LOGIN_REDIRECT_URL = 'blog/'
+LOGIN_REDIRECT_URL = 'posts/'
 LOGOUT_REDIRECT_URL = 'login/'
 
 # Database
@@ -130,11 +130,11 @@ STATICFILES_DIRS = [
     BASE_DIR / "static",
 ]
 
-TEMPLATES = [
-    {
-        'DIRS': [BASE_DIR / 'templates'],
-    },
-]
+# TEMPLATES = [
+#     {
+#         'DIRS': [BASE_DIR / 'templates'],
+#     },
+# ]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
