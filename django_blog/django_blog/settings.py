@@ -72,8 +72,12 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'django_blog.wsgi.application'
-LOGIN_REDIRECT_URL = 'posts/'
-LOGOUT_REDIRECT_URL = 'login/'
+
+LOGIN_URL = 'login'  # This should still point to the login page
+LOGIN_REDIRECT_URL = 'post_list'  # or any other page an authenticated user should be redirected to
+
+
+LOGOUT_REDIRECT_URL = 'login'
 
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases

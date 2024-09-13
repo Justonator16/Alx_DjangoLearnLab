@@ -21,9 +21,12 @@ class RegisterView(CreateView):
 
 class LoginUserView(LoginView):
     template_name = 'blog/login.html'
+    redirect_authenticated_user = True
+    success_url = reverse_lazy('login')
 
 class LogoutUserView(LogoutView):
     template_name = 'blog/logout.html'
+    next_page = reverse_lazy('login')
 
 @login_required
 def profile(request):

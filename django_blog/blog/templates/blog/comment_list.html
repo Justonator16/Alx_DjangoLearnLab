@@ -4,20 +4,19 @@
 {% block content %}
 {% if not comments %}
 <p>No Comments on <b>{{ post.author }}</b></p>
-<p>Create a post <a href="{% url 'comment_create' post.id %}"></a></p>
+<p>Create a post <a href="{% url 'comment_create' %}">Here</a></p>
 
 {% else %}
 <table>
     <th>
-        <td>Comment Post</td>
         <td>Comment Update</td>
         <td>Comment Delete</td>
     </th>
     {% for comment in comments %}
     <tr>
         <td><a href="{% url 'comment_detail' comment.id %}">{{ comment.post }}</a></td>
-        <td><a href="{% url 'comment_update' comment.id %}"> Update Comment</a> </td>
-        <td><a href="{% url 'comment_delete' comment.id %}"> Delete Comment</a></td>
+        <td><a href="{% url 'comment_update' comment.id %}"> Update</a> </td>
+        <td><a href="{% url 'comment_delete' comment.id %}"> Delete</a></td>
     </tr>
 </table>
     {% endfor %}

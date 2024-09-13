@@ -2,7 +2,7 @@
 {% block title %} Comment Update {% endblock %}
 
 {% block content %}
-<form action="{% url 'comment_update' %}" method="post">
+<form action="{% url 'comment_update' comment.id %}" method="post">
     {% csrf_token %}
     {{ form.as_p }}
     <button type="submit">Update Comment</button>
