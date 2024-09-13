@@ -21,6 +21,7 @@
         </li>
         <li class="nav-item">
             <form method="GET" action="{% url 'search' %}">
+                {% csrf_token %}
                 <input type="text" name="q" placeholder="Search posts...">
                 <button type="submit">Search</button>
             </form>
