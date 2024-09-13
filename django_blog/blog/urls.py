@@ -5,6 +5,7 @@ from blog import views as tag
 
 # Checker fix
 "post/<int:pk>/comments/new/"
+"tags/<slug:tag_slug>/", "PostByTagListView.as_view()"
 
 urlpatterns = [
     path("", BlogView.as_view() , name="blog"),
