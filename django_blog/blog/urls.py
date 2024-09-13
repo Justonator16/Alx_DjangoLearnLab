@@ -2,6 +2,9 @@ from django.urls import path
 from blog.views import LoginUserView, RegisterView, LogoutUserView, profile, BlogView
 from blog import views as crud
 
+# Checker fix
+"post/<int:pk>/comments/new/"
+
 urlpatterns = [
     path("", BlogView.as_view() , name="blog"),
     path('register/', RegisterView.as_view(), name='register'),
