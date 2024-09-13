@@ -19,6 +19,12 @@
         <li class="nav-item"></li>
             <a href="{% url 'register' %}">register</a>
         </li>
+        <li class="nav-item">
+            <form method="GET" action="{% url 'search' %}">
+                <input type="text" name="q" placeholder="Search posts...">
+                <button type="submit">Search</button>
+            </form>
+        </li>
         <li class="nav-item"></li>
             <a class="na-link active" aria-current="page" href="{% url 'logout' %}">Logout</a>
         </li>

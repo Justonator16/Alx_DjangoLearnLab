@@ -1,6 +1,7 @@
 from django.urls import path
 from blog.views import LoginUserView, RegisterView, LogoutUserView, profile, BlogView
 from blog import views as crud
+from blog import views as tag
 
 # Checker fix
 "post/<int:pk>/comments/new/"
@@ -25,4 +26,8 @@ urlpatterns = [
     path('comment/<int:pk>/detail/', crud.CommentDetailView.as_view(), name="comment_detail"),
     path('comment/<int:pk>/update/', crud.CommentUpdateView.as_view(), name="comment_update"),
     path('comment/<int:pk>/delete/', crud.CommentDeleteView.as_view(), name="comment_delete"),
+
+    # Tags
+    path('search/', tag.post_search, name='search'),
+    path('tags/<str:tag_name>/', tag.posts_by_tag, name='posts_by_tag'),
 ]

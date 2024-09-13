@@ -8,6 +8,7 @@ from django.views.generic import CreateView, TemplateView, DetailView, UpdateVie
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from .forms import ProfileForm, PostForm, CommentForm
 from .models import Post, Comment
+from django.db.models import Q
 
 class BlogView(TemplateView):
     template_name = 'blog/blog.html'
@@ -119,6 +120,20 @@ class CommentDeleteView(UserPassesTestMixin, DeleteView):
 
     def test_func(self) -> bool | None:
         return self.request.user.is_authenticated
+    
+def post_search(request):
+    query = request.GET.get('q')
+    results = Post.objects.filter(
+        Q(title__icontains=query) | 
+        Q(content__icontains=query) | 
+        Q(tags__name__icontains=query)
+    ).distinct()
+    return render(request, 'blog/search_results.html', {'posts': results, 'query': query})
+
+def posts_by_tag(request, tag_name):
+    posts = Post.objects.filter(tags__name=tag_name)
+    return render(request, 'blog/posts_by_tag.html', {'posts': posts, 'tag_name': tag_name})
+
 
 
     
