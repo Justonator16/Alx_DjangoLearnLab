@@ -24,4 +24,8 @@ class Comment(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
+# remove practice
+class Practice(models.Model):
+    hallo = models.TextField()
+
 

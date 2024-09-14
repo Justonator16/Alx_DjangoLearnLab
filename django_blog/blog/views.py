@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
+from django.contrib import auth
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.views import LoginView, LogoutView
@@ -25,9 +26,17 @@ class LoginUserView(LoginView):
     redirect_authenticated_user = True
     success_url = reverse_lazy('login')
 
-class LogoutUserView(LogoutView):
-    template_name = 'blog/logout.html'
-    next_page = reverse_lazy('login')
+
+# class LogoutUserView(LogoutView):
+#     template_name = 'blog/logout.html'
+#     next_page = reverse_lazy('login')
+
+#     def get_template_names(self) -> list[str]:
+#         return super().get_template_names()
+
+def LogoutUserView(request):
+    auth.logout(request)
+    return redirect('login')
 
 @login_required
 def profile(request):

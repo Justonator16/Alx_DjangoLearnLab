@@ -11,7 +11,7 @@ urlpatterns = [
     path("", BlogView.as_view() , name="blog"),
     path('register/', RegisterView.as_view(), name='register'),
     path('login/', LoginUserView.as_view(), name='login'),
-    path('logout/', LogoutUserView.as_view() ,name='logout'),
+    path('logout/', LogoutUserView ,name='logout'),
     path('profile/', profile, name='profile'),
 
     # CRUD Operations for Post Model
