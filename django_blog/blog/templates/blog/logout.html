@@ -1,10 +1,8 @@
 {% extends 'blog/base.html' %}
 {% block title %}Logout {% endblock %}
 
-{% block content %}
+{% block body %}
 <h1>Are you sure you want to log out?</h1>
-<form action="{% url 'logout' %}" method="post">
-    <button type="submit">Yes</button>
-    <a href="{% url 'blog' %}">No</a>
-</form>
+<button type="submit">Yes</button>
+<a href="{% url 'blog' %}">No</a>
 {% endblock %}

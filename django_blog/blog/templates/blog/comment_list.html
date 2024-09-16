@@ -1,7 +1,7 @@
 {% extends 'blog/base.html' %}
 {% block title %} Comment List {% endblock %}
 
-{% block content %}
+{% block body %}
 {% if not comments %}
 <p>No Comments on <b>{{ post.author }}</b></p>
 <p>Create a post <a href="{% url 'comment_create' %}">Here</a></p>
