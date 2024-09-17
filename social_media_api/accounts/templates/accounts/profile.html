@@ -1,7 +1,10 @@
 {% extends 'accounts/base.html' %}
 {% block title %} Profile Detail {% endblock %}
 
+
 {% block body %}
+<h1>{% block head %} Profile Detail {% endblock %}</h1>
+
 {% if not user_profile %}
 <p>No profile found </p>
 <p>Create a profile <a href="{% url 'profile_create' %}">Here</a></p>

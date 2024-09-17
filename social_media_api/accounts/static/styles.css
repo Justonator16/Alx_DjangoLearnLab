@@ -1,4 +1,4 @@
-/* Basic form container styling */
+Basic form container styling
 body {
   font-family: Arial, sans-serif;
   background-color: #f4f4f9;
@@ -18,7 +18,7 @@ body {
   max-width: 400px;
 }
 
-h2 {
+h1 {
   text-align: center;
   color: #333;
 }
