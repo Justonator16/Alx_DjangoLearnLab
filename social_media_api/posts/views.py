@@ -1,44 +1,19 @@
-from django.shortcuts import render, redirect
-from django.urls import reverse_lazy
-from rest_framework.generics import CreateAPIView, ListAPIView, DestroyAPIView, UpdateAPIView
-from .serializers import PostSerializer, CommentSerializer
+from rest_framework import viewsets, permissions
 from .models import Post, Comment
+from .serializers import PostSerializer, CommentSerializer
 
-# CRUD OPERATIONS API
-# Create API
-class PostCreateAPIView(CreateAPIView):
-    serializer_class = CreateAPIView
-
-# View all posts 
-class PostListAPIView(ListAPIView):
+class PostViewSet(viewsets.ModelViewSet):
+    queryset = Post.objects.all().order_by('-created_at')
     serializer_class = PostSerializer
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
 
-# Update a post
-class PostUpdateView(UpdateAPIView):
-    serializer_class = PostSerializer
+    def perform_create(self, serializer):
+        serializer.save(author=self.request.user)
 
-# Delete a post
-class PostDestroyAPIView(DestroyAPIView):
-    serializer_class = PostSerializer
-
-# Comment crud
-
-class CommentCreateAPIView(CreateAPIView):
+class CommentViewSet(viewsets.ModelViewSet):
+    queryset = Comment.objects.all().order_by('-created_at')
     serializer_class = CommentSerializer
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
 
-# View all posts 
-class CommentListAPIView(ListAPIView):
-    serializer_class = CommentSerializer
-
-# Update a post
-class CommentUpdateView(UpdateAPIView):
-    serializer_class = CommentSerializer
-
-# Delete a post
-class CommentDestroyAPIView(DestroyAPIView):
-    serializer_class = CommentSerializer
-
-
-    
-
-
+    def perform_create(self, serializer):
+        serializer.save(author=self.request.user)
