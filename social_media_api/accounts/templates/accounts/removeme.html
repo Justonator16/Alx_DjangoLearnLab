@@ -1,0 +1,17 @@
+{% extends 'accounts/base.html' %}
+{% block title %} Users {% endblock %}
+
+{% block body %}
+<h1>The following list are the users you can follow</h1>
+<p>Welcome {{ user }}</p>
+<ul>
+    {% for account in users %}
+    <li>
+        {{ user }}
+        {{ user.id }}
+        <a href="{% url 'follow-user' user.id %}">Follow</a>
+
+    </li>
+    {% endfor %}
+</ul>
+{% endblock %}

@@ -12,4 +12,9 @@ urlpatterns = [
 
     #Serializer
     path('api/register/', views.RegisterCreateAPIView.as_view(), name='api_register'),
+
+    #Follow and unfollow users
+    path('all_user/', views.UserListView.as_view(), name='all_users'),
+    path('follow/<int:user_id>/', views.follow_user, name='follow-user'),
+    path('unfollow/<int:user_id>/', views.unfollow_user, name='unfollow-user'),
 ]
