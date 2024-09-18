@@ -6,11 +6,12 @@ from django.views.generic import CreateView, ListView, UpdateView, DeleteView, D
 from .forms import CustomUserForm
 from .models import CustomUser
 from .serializers import RegisterSerializer
-from rest_framework.generics import CreateAPIView
+from rest_framework.generics import CreateAPIView, GenericAPIView
+from rest_framework import generics
 
-class UserListView(ListView):
+class UserListView(ListView, generics.GenericAPIView):
     model = User
-    queryset = User.objects.all()
+    queryset = CustomUser.objects.all()
     template_name = 'accounts/removeme.html'
     context_object_name = 'users'
 
@@ -52,12 +53,15 @@ class ProfileDetailView(DetailView):
 
 
 from rest_framework import status
-from rest_framework.decorators import api_view
+from rest_framework.decorators import api_view, permission_classes
 from rest_framework.response import Response
 from django.shortcuts import get_object_or_404
 from .models import CustomUser
+from rest_framework import permissions
+
 
 @api_view(['POST'])
+@permission_classes([permissions.IsAuthenticated])
 def follow_user(request, user_id):
     user_to_follow = get_object_or_404(CustomUser, id=user_id)
     if user_to_follow == request.user:
@@ -66,6 +70,7 @@ def follow_user(request, user_id):
     return Response({"message": f"You are now following {user_to_follow.username}."}, status=status.HTTP_200_OK)
 
 @api_view(['POST'])
+@permission_classes([permissions.IsAuthenticated])
 def unfollow_user(request, user_id):
     user_to_unfollow = get_object_or_404(CustomUser, id=user_id)
     if user_to_unfollow == request.user:
