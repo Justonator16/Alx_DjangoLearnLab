@@ -42,15 +42,15 @@ from rest_framework.permissions import IsAuthenticated
 from .models import Post, Like
 from notifications.models import Notification
 from django.contrib.contenttypes.models import ContentType
+from rest_framework import generics
 
 @api_view(['POST'])
-def like_post(request, pk):
-    post = Post.objects.get(pk=pk)
-    user = request.user
+def like_post(request, pk): 
+    post = generics.get_object_or_reate(Post, pk=pk)
     if Like.objects.filter(post=post, user=user).exists():
         return Response({'detail': 'You already liked this post.'}, status=400)
 
-    Like.objects.create(post=post, user=user)
+    Like.objects.get_or_create(user=request.user, post=post)
     
     # Create notification for post author
     Notification.objects.create(
