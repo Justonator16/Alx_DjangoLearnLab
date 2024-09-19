@@ -35,3 +35,39 @@ def user_feed(request):
     serializer = PostSerializer(posts, many=True)
     return Response(serializer.data, status=status.HTTP_200_OK)
 
+# posts/views.py
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
+from rest_framework.permissions import IsAuthenticated
+from .models import Post, Like
+from notifications.models import Notification
+from django.contrib.contenttypes.models import ContentType
+
+@api_view(['POST'])
+def like_post(request, pk):
+    post = Post.objects.get(pk=pk)
+    user = request.user
+    if Like.objects.filter(post=post, user=user).exists():
+        return Response({'detail': 'You already liked this post.'}, status=400)
+
+    Like.objects.create(post=post, user=user)
+    
+    # Create notification for post author
+    Notification.objects.create(
+        recipient=post.author,
+        actor=user,
+        verb='liked your post',
+        target=post
+    )
+    
+    return Response({'detail': 'Post liked successfully.'})
+
+@api_view(['POST'])
+def unlike_post(request, pk):
+    post = Post.objects.get(pk=pk)
+    user = request.user
+    like = Like.objects.filter(post=post, user=user)
+    if like.exists():
+        like.delete()
+        return Response({'detail': 'Post unliked successfully.'})
+    return Response({'detail': 'You have not liked this post.'}, status=400)
