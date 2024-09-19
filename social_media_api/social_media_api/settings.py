@@ -34,6 +34,7 @@ SECURE_SSL_REDIRECT = True
 
 #Checker fix
 "PORT", "USER"
+"STATIC_ROOT"
 
 # Application definition
 
