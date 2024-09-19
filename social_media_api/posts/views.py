@@ -47,6 +47,7 @@ from rest_framework import generics
 @api_view(['POST'])
 def like_post(request, pk): 
     post = generics.get_object_or_reate(Post, pk=pk)
+    user = request.user
     if Like.objects.filter(post=post, user=user).exists():
         return Response({'detail': 'You already liked this post.'}, status=400)
 
@@ -64,7 +65,7 @@ def like_post(request, pk):
 
 @api_view(['POST'])
 def unlike_post(request, pk):
-    post = Post.objects.get(pk=pk)
+    post = generics.get_object_or_404(Post, pk=pk)
     user = request.user
     like = Like.objects.filter(post=post, user=user)
     if like.exists():
