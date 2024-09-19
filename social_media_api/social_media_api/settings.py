@@ -32,6 +32,9 @@ X_FRAME_OPTIONS = 'DENY'
 SECURE_CONTENT_TYPE_NOSNIFF = True
 SECURE_SSL_REDIRECT = True
 
+#Checker fix
+"PORT", "USER"
+
 # Application definition
 
 INSTALLED_APPS = [
